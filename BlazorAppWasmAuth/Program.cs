@@ -1,9 +1,3 @@
-using BlazorAppWasmAuth;
-using BlazorAppWasmAuth.Auth;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");

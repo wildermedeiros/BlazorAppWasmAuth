@@ -4,3 +4,8 @@ global using System.IdentityModel.Tokens.Jwt;
 global using System.Security.Claims;
 global using System.Text.Json.Serialization;
 global using System.Text.Json;
+global using BlazorAppWasmAuth;
+global using BlazorAppWasmAuth.Auth;
+global using Microsoft.AspNetCore.Components.Web;
+global using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+global using Microsoft.IdentityModel.Protocols.OpenIdConnect;
