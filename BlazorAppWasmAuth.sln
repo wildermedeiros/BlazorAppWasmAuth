@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34825.169
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppWasmAuth", "BlazorAppWasmAuth\BlazorAppWasmAuth.csproj", "{BC0238EB-9AE4-4919-912C-AD992E01A887}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC0238EB-9AE4-4919-912C-AD992E01A887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0238EB-9AE4-4919-912C-AD992E01A887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0238EB-9AE4-4919-912C-AD992E01A887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0238EB-9AE4-4919-912C-AD992E01A887}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1E03031-316C-4110-8119-5D080B22CD12}
+	EndGlobalSection
+EndGlobal
