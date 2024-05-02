@@ -26,7 +26,7 @@ public class CustomAccountFactory(IAccessTokenProviderAccessor accessor) : Accou
             if (string.IsNullOrEmpty(resourceAccessValues)) 
                 return user;
 
-            if (azp is null)
+            if (string.IsNullOrEmpty(azp))
                 throw new InvalidOperationException($"Claim azp:{azp}, is null in the access token");
 
             using var resourceAccess = JsonDocument.Parse(resourceAccessValues);
