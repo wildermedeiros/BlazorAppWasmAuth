@@ -4,7 +4,7 @@ namespace BlazorAppWasmAuth.Auth;
 
 public class CustomAccountFactory(IAccessTokenProviderAccessor accessor) : AccountClaimsPrincipalFactory<RemoteUserAccount>(accessor)
 {
-    private readonly IAccessTokenProvider accessTokenProvider = accessor.TokenProvider;
+    private readonly IAccessTokenProviderAccessor accessor = accessor;
 
     public override async ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account, RemoteAuthenticationUserOptions options)
     {
@@ -15,7 +15,7 @@ public class CustomAccountFactory(IAccessTokenProviderAccessor accessor) : Accou
             if (user.Identity is not null && user.Identity.IsAuthenticated)
             {
                 var identity = (ClaimsIdentity)user.Identity;
-                var accessTokenResult = await accessTokenProvider.RequestAccessToken();
+                var accessTokenResult = await accessor.TokenProvider.RequestAccessToken();
 
                 if (accessTokenResult.TryGetToken(out var accessToken))
                 {

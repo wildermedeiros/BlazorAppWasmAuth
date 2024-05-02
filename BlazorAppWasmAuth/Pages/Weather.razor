@@ -1,5 +1,6 @@
 ﻿@page "/weather"
 @inject HttpClient Http
+@attribute [Authorize(Roles = "admin")]
 
 <PageTitle>Weather</PageTitle>
 
