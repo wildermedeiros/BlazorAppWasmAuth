@@ -8,7 +8,6 @@ builder.Services.AddOidcAuthentication(options =>
 {
     builder.Configuration.Bind("Keycloak", options.ProviderOptions);
     options.ProviderOptions.ResponseType = OpenIdConnectResponseType.Code;
-
     //options.AuthenticationPaths.LogOutSucceededPath = "";
 }).AddAccountClaimsPrincipalFactory<CustomAccountFactory>();
 
