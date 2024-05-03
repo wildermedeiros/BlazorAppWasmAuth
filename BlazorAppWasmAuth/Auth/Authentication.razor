@@ -1,6 +1,37 @@
 ﻿@page "/authentication/{action}"
 
-<RemoteAuthenticatorView Action="@Action" />
+<RemoteAuthenticatorView Action="@Action">
+
+    <LoggingIn>
+        <p>Redirecionando para autenticação.</p>
+    </LoggingIn>
+
+    <CompletingLoggingIn>
+        <p>Autorizando.</p>
+    </CompletingLoggingIn>
+
+    <LogInFailed>
+        <p>Falha. Login não realizado.</p>
+    </LogInFailed>
+
+    <LogOut>
+        <p>Redirecionando para deslogar.</p>
+    </LogOut>
+
+    <CompletingLogOut>
+        <p>Deslogando.</p>
+    </CompletingLogOut>
+
+    <LogOutFailed>
+        <p>Falha. Logout não realizado.</p>
+    </LogOutFailed>
+
+    <LogOutSucceeded>
+        <p>Deslogado.</p>
+    </LogOutSucceeded>
+
+</RemoteAuthenticatorView>
+
 
 @code{
     [Parameter] public string? Action { get; set; }
