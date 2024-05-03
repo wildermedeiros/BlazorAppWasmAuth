@@ -10,9 +10,6 @@ builder.Services.AddOidcAuthentication(options =>
     options.ProviderOptions.ResponseType = OpenIdConnectResponseType.Code;
 
     //options.AuthenticationPaths.LogOutSucceededPath = "";
-
 }).AddAccountClaimsPrincipalFactory<CustomAccountFactory>();
-
-
 
 await builder.Build().RunAsync();
