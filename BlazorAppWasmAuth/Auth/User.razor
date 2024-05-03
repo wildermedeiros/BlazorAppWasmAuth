@@ -1,7 +1,6 @@
 @page "/user"
-@attribute [Authorize]
-
 @inject IAccessTokenProvider AuthorizationService
+@attribute [Authorize]
 
 <h1>@AuthenticatedUser?.Identity?.Name</h1>
 

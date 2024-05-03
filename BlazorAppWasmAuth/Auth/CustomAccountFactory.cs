@@ -11,7 +11,7 @@ public class CustomAccountFactory(IAccessTokenProviderAccessor accessor) : Accou
         if (user.Identity is not null && user.Identity.IsAuthenticated)
         {
             var identity = user.Identity as ClaimsIdentity ?? 
-                throw new InvalidOperationException($"Cast: {user.Identity} of type ClaimsPrincipal to ClaimsIdentity did not work");
+                throw new InvalidOperationException($"The cast of type ClaimsPrincipal to ClaimsIdentity did not work");
 
             var accessTokenResult = await accessor.TokenProvider.RequestAccessToken();
 
@@ -27,13 +27,13 @@ public class CustomAccountFactory(IAccessTokenProviderAccessor accessor) : Accou
                 return user;
 
             if (string.IsNullOrEmpty(azp))
-                throw new InvalidOperationException($"Claim azp:{azp}, is null in the access token");
+                throw new InvalidOperationException($"Claim 'azp' is null or empty in the access token");
 
             using var resourceAccess = JsonDocument.Parse(resourceAccessValues);
             bool containsResourceElement = resourceAccess.RootElement.TryGetProperty(azp, out var resourceValues);
 
             if (!containsResourceElement)
-                throw new InvalidOperationException($"Verify if the resource_access has a {azp} property");
+                throw new InvalidOperationException($"Failed to provision azp's property values from the resource_access.");
 
             var rolesValues = resourceValues.GetProperty("roles");
 
@@ -51,10 +51,10 @@ public class CustomAccountFactory(IAccessTokenProviderAccessor accessor) : Accou
         return user;
     }
 
-    private static Claim GetMatchingRoleClaim(ClaimsIdentity claimsIdentity, string roleValue)
+    private static Claim GetMatchingRoleClaim(ClaimsIdentity identity, string roleValue)
     {
-        return claimsIdentity.Claims.FirstOrDefault(claim =>
-            claim.Type.Equals(claimsIdentity.RoleClaimType, StringComparison.InvariantCultureIgnoreCase) &&
+        return identity.Claims.FirstOrDefault(claim =>
+            claim.Type.Equals(identity.RoleClaimType, StringComparison.InvariantCultureIgnoreCase) &&
             claim.Value.Equals(roleValue, StringComparison.InvariantCultureIgnoreCase))!;
     }
 }
