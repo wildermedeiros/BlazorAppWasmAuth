@@ -1,7 +1,25 @@
-## Blazor web assembly standalone app with OIDC authentication
+## Blazor WebAssembly Standalone App with OIDC Authentication
 
-1. Create a blazor web assembly standalone app with Microsoft Identity or add the `Microsoft.AspNetCore.Components.WebAssembly.Authentication`to a existent project
-2. In the `Program.cs` file add:
+This steps provides instructions for setting up a standalone Blazor WebAssembly application using OpenID Connect (OIDC) authentication with Microsoft Identity.
+
+### Prerequisites
+
+- Visual Studio or VSCode;
+- Docker;
+- Keycloak configuration.
+
+### Setup
+
+**1. Create/Update Project:**
+- To create a new Blazor WebAssembly project, use the appropriate template available in Visual Studio or via the CLI.
+- To add OIDC authentication to an existing project, include the dependency `Microsoft.AspNetCore.Components.WebAssembly.Authentication`.
+
+> **Note: It is more convenient to create a new project based on Microsoft Identity.**
+  
+**2. Setup authentication in the `Program.cs`:**
+
+Add the following code block to your `Program.cs` file to set up OIDC authentication:
+
 ```cs
 builder.Services.AddOidcAuthentication(options =>
 {
@@ -9,8 +27,13 @@ builder.Services.AddOidcAuthentication(options =>
     options.ProviderOptions.ResponseType = OpenIdConnectResponseType.Code;
 }).AddAccountClaimsPrincipalFactory<CustomAccountFactory>();
 ```
-> The `CustomAccountFactory` inherent from `AccountClaimsPrincipalFactory` that handles user creation from the authentication process
-4. In the app's `wwwroot/appsettings.json` add your IP's configs:
+
+> **Note: `CustomAccountFactory` is a class that inherits from `AccountClaimsPrincipalFactory` and is responsible for creating the user from the authentication process.**
+
+**3. Configure the identity provider in `appsettings.json`:**
+
+In the **wwwroot** directory of your application, update the `appsettings.json` file with the settings of your OIDC authentication server as shown below:
+
 ```json
   "Keycloak": {
     "Authority": "http://localhost:8080/realms/wilder",
